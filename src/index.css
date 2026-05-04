@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+    --default-font-family: "Atkinson Hyperlegible", sans-serif;
+    --color-bg-blue: rgb(21, 41, 56);
+    --color-pri-orange: rgb(253, 162, 20);
+    --color-pri-gray: rgb(252, 252, 252);
+    --color-pri-blue: rgb(48, 72, 89);
+    --color-sec-blue: rgb(188, 206, 217);
+    --color-tert-blue: rgb(223, 231, 236);
+    --color-text-blue: rgb(113, 145, 165);
+}
