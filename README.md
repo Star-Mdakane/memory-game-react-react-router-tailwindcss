@@ -49,6 +49,24 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Live Site URL: [Add live site URL here](https://memory-game-react-react-router-tail.vercel.app/)
 
 ## My process
+1. Design
+- After my planning I am going to be using react router for the pages.
+- I will have two layout pages for start menu and in game screen.
+- pages for start menu and game screen is going to have 4 pages which are static.
+- Once I get the display right then i will try to convert the in game pages to a dynamic page.
+- Also I will have a couple of modals for results and menu.
+
+Poblems
+
+2. Data
+- The first isssue is that I do not have any given data which means I have to make my own data on an external file or something, then I will import it.
+- Also I have been creating a static ui which I have to convert to dynamic before I populate with the data, for now I just create a static grid as template since the grid might jump all over when I populate it th the data without structure.
+
+
+3. Logic
+- I have to look at the players which initially will control the footer dependinng on the players that are active.
+- When there is a single player I have to use a timer along with the game logic.
+- On multiplayer I have to consider the player turn, which will be determined by the current turn and that also will go with some more logic as to what happens on the game.
 
 ### Built with
 
@@ -57,6 +75,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
+- React Hook Form
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
 - [Styled Components](https://styled-components.com/) - For styles
