@@ -1,11 +1,17 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { GlobalContext } from "../contexts/GlobalContext";
+import { useNavigate } from "react-router";
 
 const StartPage = () => {
 
     const { register, handleSubmit } = useForm();
+    const { setstartValues } = useContext(GlobalContext);
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log(data);
+        setstartValues(data);
+        navigate("/game/icons-four")
     }
 
     return (

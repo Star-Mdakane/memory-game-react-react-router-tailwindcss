@@ -1,0 +1,43 @@
+import { FaApple, FaBeer, FaBiohazard, FaCannabis, FaChessKnight, FaEmpire, FaGasPump, FaGhost, FaGithub, FaGitkraken, FaLanguage, FaPhoenixFramework, FaPhoenixSquadron, FaReact, FaStar, FaXbox, FaYoutube } from "react-icons/fa"
+
+export const THEMES = {
+    numbers: [
+        { pairId: 1, content: 1 },
+        { pairId: 2, content: 2 },
+        { pairId: 3, content: 3 },
+        { pairId: 4, content: 4 },
+        { pairId: 5, content: 5 },
+        { pairId: 6, content: 6 },
+        { pairId: 7, content: 7 },
+        { pairId: 8, content: 8 },
+        { pairId: 9, content: 9 },
+        { pairId: 10, content: 10 },
+        { pairId: 11, content: 11 },
+        { pairId: 12, content: 12 },
+        { pairId: 13, content: 13 },
+        { pairId: 14, content: 14 },
+        { pairId: 15, content: 15 },
+        { pairId: 16, content: 16 },
+        { pairId: 17, content: 17 },
+        { pairId: 18, content: 18 },
+    ],
+    icons: [
+        { pairId: 1, content: <FaReact /> },
+        { pairId: 2, content: <FaApple /> },
+        { pairId: 3, content: <FaPhoenixFramework /> },
+        { pairId: 4, content: <FaXbox /> },
+        { pairId: 5, content: <FaPhoenixSquadron /> },
+        { pairId: 6, content: <FaBeer /> },
+        { pairId: 7, content: <FaBiohazard /> },
+        { pairId: 8, content: <FaGhost /> },
+        { pairId: 9, content: <FaStar /> },
+        { pairId: 10, content: <FaGitkraken /> },
+        { pairId: 11, content: <FaYoutube /> },
+        { pairId: 12, content: <FaCannabis /> },
+        { pairId: 13, content: <FaChessKnight /> },
+        { pairId: 14, content: <FaLanguage /> },
+        { pairId: 15, content: <FaEmpire /> },
+        { pairId: 16, content: <FaGasPump /> },
+        { pairId: 17, content: <FaGithub /> },
+    ]
+}

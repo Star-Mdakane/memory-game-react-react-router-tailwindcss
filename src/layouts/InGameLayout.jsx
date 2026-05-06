@@ -1,8 +1,16 @@
 import { Outlet } from "react-router"
-// import SinglePlayer from "../components/SinglePlayer"
+import SinglePlayer from "../components/SinglePlayer";
 import MultiPlayer from "../components/MultiPlayer"
+import { useContext } from "react"
+import { GlobalContext } from "../contexts/GlobalContext"
+import { THEMES } from "../data/themes";
 
 const InGameLayout = () => {
+
+    const { startValues } = useContext(GlobalContext);
+    const { players } = startValues;
+    console.log(players);
+
     return (
         <div className="w-screen min-h-screen flex flex-col items-center justify-around bg-pri-gray">
             <header className="flex items-center justify-between w-81.5 md:w-172.5 lg:w-277.5 mx-auto">
@@ -11,8 +19,7 @@ const InGameLayout = () => {
             </header>
             <Outlet />
             <div className="w-82 md:w-172">
-                {/* <SinglePlayer /> */}
-                <MultiPlayer />
+                {players > 1 ? <MultiPlayer players={players} /> : <SinglePlayer />}
             </div>
         </div>
     )
