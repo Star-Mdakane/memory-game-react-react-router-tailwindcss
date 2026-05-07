@@ -1,4 +1,4 @@
-import { FaApple, FaBeer, FaBiohazard, FaCannabis, FaChessKnight, FaEmpire, FaGasPump, FaGhost, FaGithub, FaGitkraken, FaLanguage, FaPhoenixFramework, FaPhoenixSquadron, FaReact, FaStar, FaXbox, FaYoutube } from "react-icons/fa"
+import { FaApple, FaBeer, FaBiohazard, FaCannabis, FaChessKnight, FaEmpire, FaGasPump, FaGhost, FaGithub, FaGitkraken, FaLanguage, FaOldRepublic, FaPhoenixFramework, FaPhoenixSquadron, FaReact, FaStar, FaXbox, FaYoutube } from "react-icons/fa"
 
 export const THEMES = {
     numbers: [
@@ -39,6 +39,6 @@ export const THEMES = {
         { pairId: 15, content: <FaEmpire /> },
         { pairId: 16, content: <FaGasPump /> },
         { pairId: 17, content: <FaGithub /> },
-        { pairId: 18, content: <FaGithub /> },
+        { pairId: 18, content: <FaOldRepublic /> },
     ]
 }
