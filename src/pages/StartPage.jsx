@@ -11,7 +11,7 @@ const StartPage = () => {
 
     const onSubmit = (data) => {
         setstartValues(data);
-        navigate("/game/icons-four")
+        navigate(`/game/${data.theme}/${data.gridSize}`)
     }
 
     return (
@@ -56,11 +56,11 @@ const StartPage = () => {
                         <legend className="text-[15px] md:text-[20px] leading-[125%] tracking-normal font-bold text-text-blue mb-4">Grid Size</legend>
                         <div className="grid grid-cols-2 h-10 md:h-13 gap-2 md:gap-8">
                             <label htmlFor="grid-4" className="flex items-center justify-center cursor-pointer bg-sec-blue has-checked:bg-pri-blue rounded-[26px]">
-                                <input type="radio" name="gridSize" id="grid-4" value="4" className="appearance-none" {...register('gridSze')} defaultChecked />
+                                <input type="radio" name="gridSize" id="grid-4" value="4" className="appearance-none" {...register('gridSize')} defaultChecked />
                                 <span className="text-[16px] md:text-[20px] leading-[125%] tracking-normal font-bold">4x4</span>
                             </label>
                             <label htmlFor="grid-6" className="flex items-center justify-center cursor-pointer bg-sec-blue has-checked:bg-pri-blue rounded-[26px]">
-                                <input type="radio" name="gridSize" id="grid-6" value="6" className="appearance-none" {...register('gridSze')} />
+                                <input type="radio" name="gridSize" id="grid-6" value="6" className="appearance-none" {...register('gridSize')} />
                                 <span className="text-[16px] md:text-[20px] leading-[125%] tracking-normal font-bold">6x6</span>
                             </label>
                         </div>

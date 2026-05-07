@@ -55,18 +55,20 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - pages for start menu and game screen is going to have 4 pages which are static.
 - Once I get the display right then i will try to convert the in game pages to a dynamic page.
 - Also I will have a couple of modals for results and menu.
+- The design has one menu button on the header but two on the desktop and mobile but I think I will go with the two buttons
 
 Poblems
 
 2. Data
 - The first isssue is that I do not have any given data which means I have to make my own data on an external file or something, then I will import it.
 - Also I have been creating a static ui which I have to convert to dynamic before I populate with the data, for now I just create a static grid as template since the grid might jump all over when I populate it th the data without structure.
+- I spent more than a day trying to retrieve data for my logic busy editing whereby the error was i  the spelling where I used 'grisSze' instead of 'gridSize'
 
 
 3. Logic
 - I have to look at the players which initially will control the footer dependinng on the players that are active.
 - When there is a single player I have to use a timer along with the game logic.
-- On multiplayer I have to consider the player turn, which will be determined by the current turn and that also will go with some more logic as to what happens on the game.
+- On multiplayer I have to consider the player turn, which will be determined by the current turn and that also will go with some more logic as to what happens on the game...No, I wwill go with the menu since it has both buttons on the modal rather than using both which will require more modalas with the same function.
 
 ### Built with
 

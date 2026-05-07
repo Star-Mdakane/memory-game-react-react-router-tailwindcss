@@ -1,13 +1,14 @@
 import { createContext, useState } from "react";
+import { THEMES } from "../../public/themes";
 
 export const GlobalContext = createContext();
 
+console.log(THEMES);
+
+
 export const GlobalProvider = ({ children }) => {
-    const initValues = { theme: "", gridSize: "4", players: "1" }
+    const initValues = { theme: "numbers", gridSize: "4", players: "1" }
     const [startValues, setstartValues] = useState(initValues);
-
-    console.log(startValues);
-
 
 
     const value = {

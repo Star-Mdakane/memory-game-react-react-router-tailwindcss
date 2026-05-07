@@ -1,22 +1,21 @@
+import { useContext } from "react";
+import Card from "../components/Card"
+import { THEMES } from "/data/themes"
+import { GlobalContext } from "../contexts/GlobalContext";
+
 const IconsFour = () => {
+
+    const { startValues } = useContext(GlobalContext);
+    const { gridSize } = startValues;
+
+    const cards = THEMES.numbers.flatMap((item) => [
+        { id: `${item.pairId}-a`, ...item },
+        { id: `${item.pairId}-b`, ...item }
+    ])
+
     return (
         <div className="grid grid-cols-4 gap-6 mx-auto">
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
-            <button className="w-18 h-18 md:w-29.5 md:h-29.5 rounded-full bg-pri-blue cursor-pointer"></button>
+            {cards.map(card => <Card gridSize={gridSize} key={card.id} />)}
         </div>
     )
 }

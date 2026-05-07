@@ -3,7 +3,6 @@ import SinglePlayer from "../components/SinglePlayer";
 import MultiPlayer from "../components/MultiPlayer"
 import { useContext } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
-import { THEMES } from "../data/themes";
 
 const InGameLayout = () => {
 
