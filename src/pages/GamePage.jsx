@@ -1,36 +1,58 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router";
+import { useOutletContext, useParams } from "react-router";
 import Card from "../components/Card";
 import { createGameCards } from "../../public/gameLogic";
 import { IconContext } from "react-icons";
 
 const GamePage = () => {
 
+    const { handleMatch } = useOutletContext()
     const { theme, gridSize } = useParams();
     const [cards, setCards] = useState([]);
-    const [isFlipped, setIsFlipped] = useState(false);
-
-    const [players, setPlayers] = useState([
-        { id: 1, name: 'P1', score: 0, isActive: true },
-        { id: 2, name: 'P2', score: 0, isActive: false },
-        { id: 3, name: 'P3', score: 0, isActive: false },
-        { id: 4, name: 'P4', score: 0, isActive: false },
-    ])
-
-    const [currentPayerIndex, setCurrentPlayerIndex] = useState();
-
-    const nextTurn = () => {
-        setCurrentPlsyerIndex(prev => (prev + 1) % players.length);
-    }
-
-    const playersWithActive = players.map((p, i) => ({
-        ...p,
-        isActive: i === currentPayerIndex
-    }))
+    const [flippedCards, setFlippedCards] = useState([]);
+    const [isChecking, setIsChecking] = useState(false);
 
     useEffect(() => {
         setCards(createGameCards(theme, Number(gridSize)))
     }, [theme, gridSize])
+
+    const handleCardClick = (id) => {
+        if (isChecking || flippedCards.length === 2) return
+
+        const card = cards.find(c => c.id === id)
+        if (card.isFlipped || card.isMatched) return
+
+        const newCards = cards.map(c =>
+            c.id === id ? { ...c, isFlipped: true } : c
+        )
+        setCards(newCards)
+
+        const newFlipped = [...flippedCards, id]
+        setFlippedCards(newFlipped)
+
+        if (newFlipped.length === 2) {
+            setIsChecking(true)
+            setTimeout(() => checkForMatch(newFlipped, newCards), 1000)
+        }
+    }
+
+    const checkForMatch = (flippedIds, currentCards) => {
+        const [first, second] = flippedIds.map(id => currentCards.find(c => c.id === id))
+
+        const isMatch = first.pairId === second.pairId
+
+        setCards(prev => prev.map(c => {
+            if (flippedIds.includes(c.id)) {
+                return { ...c, isFlipped: false, isMatched: isMatch }
+            }
+            return c
+        }))
+
+        handleMatch(isMatch)
+
+        setFlippedCards([])
+        setIsChecking(false)
+    }
 
     const gridClass = gridSize === '4' ? "grid-cols-4 gap-6" : "grid-cols-6 gap-4";
     const contentSize = gridSize === '4' ? "60px" : "40px";
@@ -39,7 +61,12 @@ const GamePage = () => {
         <IconContext.Provider value={{ size: contentSize, className: "pri-gray" }}>
             <div className={`grid ${gridClass} mx-auto`}>
                 {cards.map(card => (
-                    <Card gridSize={gridSize} key={card.id} {...card} isFlipped={isFlipped} setIsFlipped={setIsFlipped} >
+                    <Card gridSize={gridSize}
+                        key={card.id}
+                        card={card}
+                        onClick={handleCardClick}
+                        disabled={isChecking || card.isFlipped || card.isMatched}
+                    >
 
                     </Card>
                 ))}

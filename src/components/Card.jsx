@@ -1,10 +1,8 @@
 
 
-const Card = ({ gridSize, pairId, content, isFlipped, setIsFlipped }) => {
+const Card = ({ card, onClick, gridSize, disabled }) => {
 
-    const handleClick = (id) => {
-        id === pairId ? content.pairId(setIsFlipped(true)) : content.pairId(setIsFlipped(false));
-    }
+    const isFaceUp = card.isFlipped || card.isMatched;
 
     const cardSize = gridSize === '4'
         ? "w-18 h-18 md:w-29.5 md:h-29.5 text-[40px] md:text-[56px]"
@@ -13,10 +11,21 @@ const Card = ({ gridSize, pairId, content, isFlipped, setIsFlipped }) => {
 
     return (
 
-        <button onClick={() => handleClick(pairId)}
-            className={`relative ${cardSize} text-pri-gray grid place-content-center bg-sec-blue rounded-full cursor-pointer group isActive`}>
-            {content}
-            <div className={`w-full h-full rounded-full absolute  group-hover:bg-hover-blue ${isFlipped ? 'group-[.isActive]:bg-none' : 'bg-bg-blue'}`}></div>
+        <button
+            onClick={() => !disabled && onClick(card.id)}
+            disabled={disabled}
+            className={`relative ${cardSize}   rounded-full cursor-pointer`}>
+            <div
+                className={`absolute inset-0 w-full h-full transition-transform duration-300 [transform-style:preserve-3d] ${isFaceUp ? '[transform:rotateY(180deg)]' : ''}`}>
+                <span
+                    className="absolute inset-0 rounded-full bg-pri-blue hover:bg-hover-blue backface-hidden">
+
+                </span>
+                <span
+                    className="absolute inset-0 rounded-full backface-hidden transform-[rotateY(180deg)] bg-sec-blue text-pri-gray grid place-content-center">
+                    {card.content}
+                </span>
+            </div>
         </button>
 
     )
