@@ -10,6 +10,24 @@ const GamePage = () => {
     const [cards, setCards] = useState([]);
     const [isFlipped, setIsFlipped] = useState(false);
 
+    const [players, setPlayers] = useState([
+        { id: 1, name: 'P1', score: 0, isActive: true },
+        { id: 2, name: 'P2', score: 0, isActive: false },
+        { id: 3, name: 'P3', score: 0, isActive: false },
+        { id: 4, name: 'P4', score: 0, isActive: false },
+    ])
+
+    const [currentPayerIndex, setCurrentPlayerIndex] = useState();
+
+    const nextTurn = () => {
+        setCurrentPlsyerIndex(prev => (prev + 1) % players.length);
+    }
+
+    const playersWithActive = players.map((p, i) => ({
+        ...p,
+        isActive: i === currentPayerIndex
+    }))
+
     useEffect(() => {
         setCards(createGameCards(theme, Number(gridSize)))
     }, [theme, gridSize])
