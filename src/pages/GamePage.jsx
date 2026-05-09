@@ -6,7 +6,7 @@ import { IconContext } from "react-icons";
 
 const GamePage = () => {
 
-    const { handleMatch } = useOutletContext()
+    const { handleMatch } = useOutletContext();
     const { theme, gridSize } = useParams();
     const [cards, setCards] = useState([]);
     const [flippedCards, setFlippedCards] = useState([]);
@@ -67,7 +67,6 @@ const GamePage = () => {
                         onClick={handleCardClick}
                         disabled={isChecking || card.isFlipped || card.isMatched}
                     >
-
                     </Card>
                 ))}
             </div>
