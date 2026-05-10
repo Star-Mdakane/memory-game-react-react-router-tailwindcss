@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { GlobalContext } from "../contexts/GlobalContext";
 import { useNavigate } from "react-router";
+import { gameTimer } from "../../public/gameLogic";
 
 const StartPage = () => {
 
@@ -10,6 +11,7 @@ const StartPage = () => {
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
+        gameTimer.start();
         setstartValues(data);
         navigate(`/game/${data.theme}/${data.gridSize}`)
     }

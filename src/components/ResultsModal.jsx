@@ -1,11 +1,19 @@
+import { useNavigate } from "react-router";
 import Button from "./Button"
 import MultiPlayerModal from "./MultiPlayerModal";
 import SinglePlayerModal from "./SinglePlayerModal";
 
 const ResultsModal = ({ gamePlayers, moves }) => {
 
-    const btnWidth = "w-full"
-    const btnColor = "bg-tert-blue hover:bg-pri-orange focus-visible:bg-pri-orange"
+    const navigate = useNavigate();
+
+    const btnWidth = "w-full";
+    const btnColor = "bg-tert-blue hover:bg-pri-orange focus-visible:bg-pri-orange";
+
+    const handleRestart = () => {
+        navigate("/");
+    };
+    const handleNew = () => { };
 
     return (
         <div className="z-10 fixed w-screen h-screen bg-black/50 flex items-center justify-center">
@@ -13,8 +21,8 @@ const ResultsModal = ({ gamePlayers, moves }) => {
 
                 {gamePlayers.length > 1 ? <MultiPlayerModal players={gamePlayers} /> : <SinglePlayerModal players={gamePlayers} moves={moves} />}
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 md:mt-14">
-                    <Button btnWidth={btnWidth} btnText="Restart" btnColor={btnColor} />
-                    <Button btnWidth={btnWidth} btnText="Setup New Game" btnColor={btnColor} />
+                    <Button btnWidth={btnWidth} btnText="Restart" btnColor={btnColor} onClick={handleRestart} />
+                    <Button btnWidth={btnWidth} btnText="Setup New Game" btnColor={btnColor} onClick={handleNew} />
                 </div>
             </div>
         </div>

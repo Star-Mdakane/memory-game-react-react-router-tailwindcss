@@ -6,6 +6,7 @@ import { GlobalContext } from "../contexts/GlobalContext"
 import Button from "../components/Button";
 import MenuModal from "../components/MenuModal";
 import ResultsModal from "../components/ResultsModal";
+import { gameTimer } from "../../public/gameLogic";
 
 const InGameLayout = () => {
 
@@ -15,7 +16,7 @@ const InGameLayout = () => {
 
     const [moves, setMoves] = useState(0);
     const [menuModal, setMenuModal] = useState(false);
-    const [gameOver, setgameOver] = useState(true);
+    const [gameOver, setgameOver] = useState(false);
     const [gamePlayers, setGamePlayers] = useState(() => {
         const basePlayers = [
             { id: 1, name: 'P1', score: 0, isFlipped: false, isActive: true },
@@ -64,6 +65,7 @@ const InGameLayout = () => {
 
     const btnClicked = () => {
         setMenuModal(true);
+        gameTimer.pause();
     }
 
     return (

@@ -50,11 +50,11 @@ export const gameTimer = (() => {
             elapsed = 0;
         },
 
-        getTime() {
+        get time() {
             return running ? performance.now() - startTime : elapsed
         },
 
-        getFormatted() {
+        get formatted() {
             const ms = running ? performance.now() - startTime : elapsed;
             const mins = Math.floor(ms / 60000);
             const secs = Math.floor((ms % 60000) / 1000);

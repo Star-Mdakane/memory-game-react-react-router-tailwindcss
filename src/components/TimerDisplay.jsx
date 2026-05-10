@@ -16,7 +16,7 @@ const TimerDisplay = () => {
     }, [])
 
     return (
-        <div>{gameTimer.formatted}</div>
+        <span>{gameTimer.formatted}</span>
     )
 }
 
