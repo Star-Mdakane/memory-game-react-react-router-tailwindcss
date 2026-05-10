@@ -6,7 +6,7 @@ import { IconContext } from "react-icons";
 
 const GamePage = () => {
 
-    const { handleMatch } = useOutletContext();
+    const { handleMatch, setMoves } = useOutletContext();
     const { theme, gridSize } = useParams();
     const [cards, setCards] = useState([]);
     const [flippedCards, setFlippedCards] = useState([]);
@@ -31,6 +31,7 @@ const GamePage = () => {
         setFlippedCards(newFlipped)
 
         if (newFlipped.length === 2) {
+            setMoves(m => m + 1)
             setIsChecking(true)
             setTimeout(() => checkForMatch(newFlipped, newCards), 1000)
         }
@@ -41,14 +42,15 @@ const GamePage = () => {
 
         const isMatch = first.pairId === second.pairId
 
-        setCards(prev => prev.map(c => {
+        const updatedCards = currentCards.map(c => {
             if (flippedIds.includes(c.id)) {
                 return { ...c, isFlipped: false, isMatched: isMatch }
             }
             return c
-        }))
+        })
 
-        handleMatch(isMatch)
+        setCards(updatedCards)
+        handleMatch(isMatch, updatedCards)
 
         setFlippedCards([])
         setIsChecking(false)

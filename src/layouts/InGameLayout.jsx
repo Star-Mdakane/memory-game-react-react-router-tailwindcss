@@ -5,6 +5,7 @@ import { useContext } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 import Button from "../components/Button";
 import MenuModal from "../components/MenuModal";
+import ResultsModal from "../components/ResultsModal";
 
 const InGameLayout = () => {
 
@@ -12,8 +13,9 @@ const InGameLayout = () => {
     const { startValues } = useContext(GlobalContext);
     const { players } = startValues;
 
+    const [moves, setMoves] = useState(0);
     const [menuModal, setMenuModal] = useState(false);
-    const [resultsModal, setResultsModal] = useState(false);
+    const [gameOver, setgameOver] = useState(true);
     const [gamePlayers, setGamePlayers] = useState(() => {
         const basePlayers = [
             { id: 1, name: 'P1', score: 0, isFlipped: false, isActive: true },
@@ -34,7 +36,7 @@ const InGameLayout = () => {
         setCurrentPlayerIndex(prev => (prev + 1) % gamePlayers.length);
     }
 
-    const handleMatch = (isMatch) => {
+    const handleMatch = (isMatch, allCards) => {
         if (!isMatch) {
             nextTurn()
         } else {
@@ -45,6 +47,10 @@ const InGameLayout = () => {
                         : p
                 )
             )
+        }
+
+        if (allCards.every(c => c.isMatched)) {
+            setgameOver(true);
         }
     }
 
@@ -71,9 +77,10 @@ const InGameLayout = () => {
                     onClick={btnClicked}
                 />
             </header>
-            <Outlet context={{ handleMatch, currentPlayerIndex, gamePlayers }} />
-            <Footer players={playersWithActive} />
+            <Outlet context={{ handleMatch, currentPlayerIndex, gamePlayers, setMoves }} />
+            <Footer players={playersWithActive} moves={moves} />
             {menuModal && <MenuModal />}
+            {gameOver && <ResultsModal gamePlayers={gamePlayers} moves={moves} />}
         </div>
     )
 }

@@ -1,6 +1,4 @@
-const MultiPlayer = ({ players }) => {
-
-    console.log(players);
+const MultiPlayerFooter = ({ players }) => {
 
     return (
         <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(60px,1fr))] md:gap-2 items-center justify-between">
@@ -30,4 +28,4 @@ const MultiPlayer = ({ players }) => {
     )
 }
 
-export default MultiPlayer
+export default MultiPlayerFooter
