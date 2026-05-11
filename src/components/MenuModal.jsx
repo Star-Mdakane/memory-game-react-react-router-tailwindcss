@@ -1,24 +1,24 @@
 import { useNavigate } from "react-router"
 import Button from "./Button"
-import { gameTimer } from "../../public/gameLogic";
 
-const MenuModal = () => {
+const MenuModal = ({ setModal, resetGame }) => {
     const navigate = useNavigate();
 
     const btnWidth = "w-full"
     const btnColor = "bg-tert-blue hover:bg-pri-orange focus-visible:bg-pri-orange"
 
     const handleRestart = () => {
+        resetGame();
+        setModal(false);
         navigate("/");
-        gameTimer.reset();
     };
     const handleNew = () => {
-        gameTimer.reset();
-        gameTimer.start();
+        resetGame();
+        setModal(false);
+
     };
     const handleResume = () => {
-        gameTimer.resume();
-
+        setModal(false);
     };
 
     return (

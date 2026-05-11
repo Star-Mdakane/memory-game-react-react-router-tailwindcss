@@ -11,38 +11,43 @@ import { gameTimer } from "../../public/gameLogic";
 const InGameLayout = () => {
 
 
-    const { startValues } = useContext(GlobalContext);
+    const { startValues, moves, setMoves, resetGameCtx } = useContext(GlobalContext);
     const { players } = startValues;
-
-    const [moves, setMoves] = useState(0);
+    const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
     const [menuModal, setMenuModal] = useState(false);
     const [gameOver, setgameOver] = useState(false);
+
     const [gamePlayers, setGamePlayers] = useState(() => {
         const basePlayers = [
-            { id: 1, name: 'P1', score: 0, isFlipped: false, isActive: true },
-            { id: 2, name: 'P2', score: 0, isFlipped: false, isActive: false },
-            { id: 3, name: 'P3', score: 0, isFlipped: false, isActive: false },
-            { id: 4, name: 'P4', score: 0, isFlipped: false, isActive: false },
+            { id: 1, name: 'P1', score: 0, isFlipped: false, },
+            { id: 2, name: 'P2', score: 0, isFlipped: false, },
+            { id: 3, name: 'P3', score: 0, isFlipped: false, },
+            { id: 4, name: 'P4', score: 0, isFlipped: false, },
         ]
-
-        return basePlayers.slice(0, players).map((p, i) => ({
-            ...p,
-            isActive: i === 0
-        }))
+        return basePlayers.slice(0, players)
     })
 
-    const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
-
-    const nextTurn = () => {
-        setCurrentPlayerIndex(prev => (prev + 1) % gamePlayers.length);
+    const resetGame = () => {
+        resetGameCtx();
+        setMoves(0);
+        setCurrentPlayerIndex(0);
+        setGamePlayers(prev =>
+            prev.map((p) => ({
+                ...p,
+                score: 0,
+                isFlipped: false,
+            }))
+        )
+        setgameOver(false);
+        gameTimer.reset();
     }
 
     const handleMatch = (isMatch, allCards) => {
         if (!isMatch) {
-            nextTurn()
+            setCurrentPlayerIndex(prev => (prev + 1) % gamePlayers.length)
         } else {
-            setGamePlayers(prev =>
-                prev.map((p, i) =>
+            setGamePlayers(prevPlayers =>
+                prevPlayers.map((p, i) =>
                     i === currentPlayerIndex
                         ? { ...p, score: p.score + 1 }
                         : p
@@ -52,6 +57,7 @@ const InGameLayout = () => {
 
         if (allCards.every(c => c.isMatched)) {
             setgameOver(true);
+            gameTimer.stop();
         }
     }
 
@@ -79,10 +85,10 @@ const InGameLayout = () => {
                     onClick={btnClicked}
                 />
             </header>
-            <Outlet context={{ handleMatch, currentPlayerIndex, gamePlayers, setMoves }} />
+            <Outlet context={{ handleMatch, currentPlayerIndex, gamePlayers, setMoves, resetGame }} />
             <Footer players={playersWithActive} moves={moves} />
-            {menuModal && <MenuModal />}
-            {gameOver && <ResultsModal gamePlayers={gamePlayers} moves={moves} />}
+            {menuModal && <MenuModal setModal={setMenuModal} resetGame={resetGame} />}
+            {gameOver && <ResultsModal gamePlayers={playersWithActive} moves={moves} resetGame={resetGame} />}
         </div>
     )
 }

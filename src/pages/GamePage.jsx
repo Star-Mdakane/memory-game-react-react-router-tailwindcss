@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import { useOutletContext, useParams } from "react-router";
 import Card from "../components/Card";
 import { createGameCards } from "../../public/gameLogic";
 import { IconContext } from "react-icons";
+import { GlobalContext } from "../contexts/GlobalContext";
 
 const GamePage = () => {
 
-    const { handleMatch, setMoves } = useOutletContext();
+    const { handleMatch } = useOutletContext();
+    const { cards, setCards, setMoves, flippedCards, setFlippedCards, isChecking, setIsChecking } = useContext(GlobalContext);
     const { theme, gridSize } = useParams();
-    const [cards, setCards] = useState([]);
-    const [flippedCards, setFlippedCards] = useState([]);
-    const [isChecking, setIsChecking] = useState(false);
+
 
     useEffect(() => {
         setCards(createGameCards(theme, Number(gridSize)))
-    }, [theme, gridSize])
+    }, [theme, gridSize, setCards])
 
     const handleCardClick = (id) => {
         if (isChecking || flippedCards.length === 2) return
@@ -76,4 +76,4 @@ const GamePage = () => {
     )
 }
 
-export default GamePage
+export default GamePage;

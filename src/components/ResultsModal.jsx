@@ -3,7 +3,7 @@ import Button from "./Button"
 import MultiPlayerModal from "./MultiPlayerModal";
 import SinglePlayerModal from "./SinglePlayerModal";
 
-const ResultsModal = ({ gamePlayers, moves }) => {
+const ResultsModal = ({ gamePlayers, moves, resetGame }) => {
 
     const navigate = useNavigate();
 
@@ -11,9 +11,12 @@ const ResultsModal = ({ gamePlayers, moves }) => {
     const btnColor = "bg-tert-blue hover:bg-pri-orange focus-visible:bg-pri-orange";
 
     const handleRestart = () => {
+        resetGame();
         navigate("/");
     };
-    const handleNew = () => { };
+    const handleNew = () => {
+        resetGame();
+    };
 
     return (
         <div className="z-10 fixed w-screen h-screen bg-black/50 flex items-center justify-center">

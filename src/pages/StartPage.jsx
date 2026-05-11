@@ -11,7 +11,6 @@ const StartPage = () => {
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        gameTimer.start();
         setstartValues(data);
         navigate(`/game/${data.theme}/${data.gridSize}`)
     }

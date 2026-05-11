@@ -1,3 +1,4 @@
+import { gameTimer } from "../../public/gameLogic";
 
 
 const Card = ({ card, onClick, gridSize, disabled }) => {
@@ -8,11 +9,15 @@ const Card = ({ card, onClick, gridSize, disabled }) => {
         ? "w-18 h-18 md:w-29.5 md:h-29.5 text-[40px] md:text-[56px]"
         : "w-12 h-12 md:w-20.5 md:h-20.5 text-[24px] md:text-[44px]";
 
+    const handleClick = () => {
+        !disabled && onClick(card.id);
+        gameTimer.start();
+    }
 
     return (
 
         <button
-            onClick={() => !disabled && onClick(card.id)}
+            onClick={handleClick}
             disabled={disabled}
             className={`relative ${cardSize}   rounded-full cursor-pointer`}>
             <div
