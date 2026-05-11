@@ -54,7 +54,7 @@ const MultiPlayerModal = ({ players }) => {
                     return (
                         <div
                             key={player.id}
-                            className={`flex flex-col gap-2 md:gap-4`}>
+                            className={`flex flex-col md:flex-row gap-2 md:gap-4`}>
 
                             <div className={`h-12 md:h-18 p-3 flex flex-col md:flex-row justify-between items-center rounded-[5px] md:rounded-[10px] ${isWinner ? 'bg-pri-blue' : 'bg-tert-blue'
                                 }`}>

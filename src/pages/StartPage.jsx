@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { GlobalContext } from "../contexts/GlobalContext";
 import { useNavigate } from "react-router";
-import { gameTimer } from "../../public/gameLogic";
 
 const StartPage = () => {
 
@@ -37,19 +36,19 @@ const StartPage = () => {
                         <div className="grid grid-cols-4 h-10 md:h-13 gap-2 md:gap-6">
                             <label htmlFor="one" className="flex items-center justify-center cursor-pointer bg-sec-blue has-checked:bg-pri-blue rounded-[26px]">
                                 <input type="radio" name="players" id="one" value="1" className="appearance-none"  {...register('players')} defaultChecked />
-                                <span className="text-[16px] md:text-[20px] leading-[125%] tracking-normal font-bold">1</span>
+                                <span className="text-[16px] text-center md:text-[20px] leading-[125%] tracking-normal font-bold">1</span>
                             </label>
                             <label htmlFor="two" className="flex items-center justify-center cursor-pointer bg-sec-blue has-checked:bg-pri-blue rounded-[26px]">
                                 <input type="radio" name="players" id="two" value="2" className="appearance-none" {...register('players')} />
-                                <span className="text-[16px] md:text-[20px] leading-[125%] tracking-normal font-bold">2</span>
+                                <span className="text-[16px] text-center md:text-[20px] leading-[125%] tracking-normal font-bold">2</span>
                             </label>
                             <label htmlFor="three" className="flex items-center justify-center cursor-pointer bg-sec-blue has-checked:bg-pri-blue rounded-[26px]">
                                 <input type="radio" name="players" id="three" value="3" className="appearance-none" {...register('players')} />
-                                <span className="text-[16px] md:text-[20px] leading-[125%] tracking-normal font-bold">3</span>
+                                <span className="text-[16px] text-center md:text-[20px] leading-[125%] tracking-normal font-bold">3</span>
                             </label>
                             <label htmlFor="four" className="flex items-center justify-center cursor-pointer bg-sec-blue has-checked:bg-pri-blue rounded-[26px]">
                                 <input type="radio" name="players" id="four" value="4" className="appearance-none" {...register('players')} />
-                                <span className="text-[16px] md:text-[20px] leading-[125%] tracking-normal font-bold">4</span>
+                                <span className="text-[16px] text-center md:text-[20px] leading-[125%] tracking-normal font-bold">4</span>
                             </label>
                         </div>
                     </fieldset>
@@ -58,11 +57,11 @@ const StartPage = () => {
                         <div className="grid grid-cols-2 h-10 md:h-13 gap-2 md:gap-8">
                             <label htmlFor="grid-4" className="flex items-center justify-center cursor-pointer bg-sec-blue has-checked:bg-pri-blue rounded-[26px]">
                                 <input type="radio" name="gridSize" id="grid-4" value="4" className="appearance-none" {...register('gridSize')} defaultChecked />
-                                <span className="text-[16px] md:text-[20px] leading-[125%] tracking-normal font-bold">4x4</span>
+                                <span className="text-[16px] text-center md:text-[20px] leading-[125%] tracking-normal font-bold">4x4</span>
                             </label>
                             <label htmlFor="grid-6" className="flex items-center justify-center cursor-pointer bg-sec-blue has-checked:bg-pri-blue rounded-[26px]">
                                 <input type="radio" name="gridSize" id="grid-6" value="6" className="appearance-none" {...register('gridSize')} />
-                                <span className="text-[16px] md:text-[20px] leading-[125%] tracking-normal font-bold">6x6</span>
+                                <span className="text-[16px] text-center md:text-[20px] leading-[125%] tracking-normal font-bold">6x6</span>
                             </label>
                         </div>
                     </fieldset>
