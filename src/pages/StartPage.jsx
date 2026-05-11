@@ -60,7 +60,7 @@ const StartPage = () => {
                                 <span className="text-[16px] text-center md:text-[20px] leading-[125%] tracking-normal font-bold">4x4</span>
                             </label>
                             <label htmlFor="grid-6" className="h-full grid justify-center self-center cursor-pointer bg-sec-blue has-checked:bg-pri-blue rounded-[26px]">
-                                <input type="radio" name="gridSize" id="grid-6" value="6" className="appearance-none" {...register('gridSize')} />
+                                <input type="radio" name="gridSize" id="grid-6" value="6" className="appearance-none h-0" {...register('gridSize')} />
                                 <span className="h-full text-[16px] text-center md:text-[20px] leading-[125%] tracking-normal font-bold">6x6</span>
                             </label>
                         </div>
