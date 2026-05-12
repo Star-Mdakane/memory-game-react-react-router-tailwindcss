@@ -19,15 +19,15 @@ const Card = ({ card, onClick, gridSize, disabled }) => {
         <button
             onClick={handleClick}
             disabled={disabled}
-            className={`relative ${cardSize}   rounded-full cursor-pointer`}>
+            className={`relative ${cardSize} rounded-full cursor-pointer`}>
             <div
-                className={`absolute inset-0 w-full h-full transition-transform duration-300 [transform-style:preserve-3d] ${isFaceUp ? '[transform:rotateY(180deg)]' : ''}`}>
+                className={`absolute inset-0 w-full h-full transition-transform duration-500 transform-3d ${isFaceUp ? 'transform-[rotateY(180deg)]' : ''}`}>
                 <span
                     className="absolute inset-0 rounded-full bg-pri-blue hover:bg-hover-blue backface-hidden">
 
                 </span>
                 <span
-                    className="absolute inset-0 rounded-full backface-hidden transform-[rotateY(180deg)] bg-sec-blue text-pri-gray grid place-content-center">
+                    className={`absolute inset-0 rounded-full backface-hidden transform-[rotateY(180deg)] ${card.isMatched ? 'bg-pri-orange' : 'bg-sec-blue'}  text-pri-gray grid place-content-center transition duration-100`}>
                     {card.content}
                 </span>
             </div>
