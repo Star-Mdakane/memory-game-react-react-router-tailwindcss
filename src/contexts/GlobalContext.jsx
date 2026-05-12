@@ -1,11 +1,17 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { gameTimer, shuffle } from "../../public/gameLogic";
 
 export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
-    const initValues = { theme: "numbers", gridSize: "4", players: "1" }
-    const [startValues, setstartValues] = useState(initValues);
+    const [startValues, setstartValues] = useState(() => {
+        const saved = localStorage.getItem('savedValues');
+        return saved ? JSON.parse(saved) : { players: 1, theme: 'numbers', gridSize: 4 }
+    });
+
+    useEffect(() => {
+        localStorage.setItem('savedValues', JSON.stringify(startValues))
+    }, [startValues]);
 
     const [cards, setCards] = useState([]);
     const [flippedCards, setFlippedCards] = useState([]);

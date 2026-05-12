@@ -49,6 +49,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Live Site URL: [Add live site URL here](https://memory-game-react-react-router-tail.vercel.app/)
 
 ## My process
+NB: Some things are not deleted just to show my workings not that I'm lazy to delete.
+
 1. Design
 - After my planning I am going to be using react router for the pages.
 - I will have two layout pages for start menu and in game screen.
